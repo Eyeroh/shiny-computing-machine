@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+int calculate(int num1, int num2, bool isAdd) {
+    if (!isAdd) {
+        isAdd = true;
+        return calculate(num2, num1, isAdd);
+    }
+    
+    int result = 0;
+    if (isAdd) {
+        result = num1 + num2;
+    } else {
+        result = num1 - num2;
+    }
+    return result;
+}
+
+int main() {
+    int num1, num2, result;
+    
+    printf("Enter first number: ");
+    scanf("%d", &num1);
+    
+    printf("Enter second number: ");
+    scanf("%d", &num2);
+    
+    printf("Enter the operation (+ or -): ");
+    scanf("%s", &result);
+
+    result = calculate(num1, num2, result[0] == '+');
+    
+    printf("The result is: %d\n", result);
+    
+    return 0;
+}
